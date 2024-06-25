@@ -1,0 +1,276 @@
+[2m2024-06-26T00:18:14.807+08:00[0;39m [33m WARN[0;39m [35m19852[0;39m [2m---[0;39m [2m[phoenix-scaffold] [           main][0;39m [2m[0;39m[36mtrationDelegate$BeanPostProcessorChecker[0;39m [2m:[0;39m Bean 'com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration' of type [com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+[2m2024-06-26T00:24:25.478+08:00[0;39m [33m WARN[0;39m [35m36344[0;39m [2m---[0;39m [2m[phoenix-scaffold] [           main][0;39m [2m[0;39m[36mtrationDelegate$BeanPostProcessorChecker[0;39m [2m:[0;39m Bean 'com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration' of type [com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+[2m2024-06-26T00:24:30.956+08:00[0;39m [33m WARN[0;39m [35m36344[0;39m [2m---[0;39m [2m[phoenix-scaffold] [oundedElastic-1][0;39m [2m[0;39m[36mo.s.b.a.d.r.RedisReactiveHealthIndicator[0;39m [2m:[0;39m Redis health check failed
+
+org.springframework.data.redis.RedisConnectionFailureException: Unable to connect to Redis
+	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$ExceptionTranslatingConnectionProvider.translateException(LettuceConnectionFactory.java:1847)
+	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$ExceptionTranslatingConnectionProvider.getConnection(LettuceConnectionFactory.java:1778)
+	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$SharedConnection.getNativeConnection(LettuceConnectionFactory.java:1580)
+	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$SharedConnection.lambda$getConnection$0(LettuceConnectionFactory.java:1560)
+	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory.doInLock(LettuceConnectionFactory.java:1521)
+	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$SharedConnection.getConnection(LettuceConnectionFactory.java:1557)
+	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory.getSharedReactiveConnection(LettuceConnectionFactory.java:1268)
+	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory.getReactiveConnection(LettuceConnectionFactory.java:1143)
+	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory.getReactiveConnection(LettuceConnectionFactory.java:119)
+	at reactor.core.publisher.MonoSupplier.call(MonoSupplier.java:67)
+	at reactor.core.publisher.FluxSubscribeOnCallable$CallableSubscribeOnSubscription.run(FluxSubscribeOnCallable.java:228)
+	at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:68)
+	at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:28)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: io.lettuce.core.RedisConnectionException: Unable to connect to 192.168.156.24/<unresolved>:6379
+	at io.lettuce.core.RedisConnectionException.create(RedisConnectionException.java:78)
+	at io.lettuce.core.RedisConnectionException.create(RedisConnectionException.java:56)
+	at io.lettuce.core.AbstractRedisClient.getConnection(AbstractRedisClient.java:350)
+	at io.lettuce.core.RedisClient.connect(RedisClient.java:215)
+	at org.springframework.data.redis.connection.lettuce.StandaloneConnectionProvider.lambda$getConnection$1(StandaloneConnectionProvider.java:112)
+	at java.base/java.util.Optional.orElseGet(Optional.java:364)
+	at org.springframework.data.redis.connection.lettuce.StandaloneConnectionProvider.getConnection(StandaloneConnectionProvider.java:112)
+	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$ExceptionTranslatingConnectionProvider.getConnection(LettuceConnectionFactory.java:1776)
+	... 16 common frames omitted
+Caused by: io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: getsockopt: /192.168.156.24:6379
+Caused by: java.net.ConnectException: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:973)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:336)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:339)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:994)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+[2m2024-06-26T00:26:59.710+08:00[0;39m [33m WARN[0;39m [35m23040[0;39m [2m---[0;39m [2m[phoenix-scaffold] [           main][0;39m [2m[0;39m[36mtrationDelegate$BeanPostProcessorChecker[0;39m [2m:[0;39m Bean 'com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration' of type [com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+[2m2024-06-26T00:29:10.086+08:00[0;39m [33m WARN[0;39m [35m4024[0;39m [2m---[0;39m [2m[phoenix-scaffold] [           main][0;39m [2m[0;39m[36mtrationDelegate$BeanPostProcessorChecker[0;39m [2m:[0;39m Bean 'com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration' of type [com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+[2m2024-06-26T00:32:50.328+08:00[0;39m [33m WARN[0;39m [35m28528[0;39m [2m---[0;39m [2m[phoenix-scaffold] [  restartedMain][0;39m [2m[0;39m[36mtrationDelegate$BeanPostProcessorChecker[0;39m [2m:[0;39m Bean 'com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration' of type [com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+[2m2024-06-26T00:32:54.565+08:00[0;39m [33m WARN[0;39m [35m28528[0;39m [2m---[0;39m [2m[phoenix-scaffold] [oundedElastic-1][0;39m [2m[0;39m[36mo.s.b.a.d.r.RedisReactiveHealthIndicator[0;39m [2m:[0;39m Redis health check failed
+
+org.springframework.data.redis.RedisConnectionFailureException: Unable to connect to Redis
+	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$ExceptionTranslatingConnectionProvider.translateException(LettuceConnectionFactory.java:1847)
+	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$ExceptionTranslatingConnectionProvider.getConnection(LettuceConnectionFactory.java:1778)
+	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$SharedConnection.getNativeConnection(LettuceConnectionFactory.java:1580)
+	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$SharedConnection.lambda$getConnection$0(LettuceConnectionFactory.java:1560)
+	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory.doInLock(LettuceConnectionFactory.java:1521)
+	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$SharedConnection.getConnection(LettuceConnectionFactory.java:1557)
+	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory.getSharedReactiveConnection(LettuceConnectionFactory.java:1268)
+	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory.getReactiveConnection(LettuceConnectionFactory.java:1143)
+	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory.getReactiveConnection(LettuceConnectionFactory.java:119)
+	at reactor.core.publisher.MonoSupplier.call(MonoSupplier.java:67)
+	at reactor.core.publisher.FluxSubscribeOnCallable$CallableSubscribeOnSubscription.run(FluxSubscribeOnCallable.java:228)
+	at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:68)
+	at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:28)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: io.lettuce.core.RedisConnectionException: Unable to connect to 192.168.156.24/<unresolved>:6379
+	at io.lettuce.core.RedisConnectionException.create(RedisConnectionException.java:78)
+	at io.lettuce.core.RedisConnectionException.create(RedisConnectionException.java:56)
+	at io.lettuce.core.AbstractRedisClient.getConnection(AbstractRedisClient.java:350)
+	at io.lettuce.core.RedisClient.connect(RedisClient.java:215)
+	at org.springframework.data.redis.connection.lettuce.StandaloneConnectionProvider.lambda$getConnection$1(StandaloneConnectionProvider.java:112)
+	at java.base/java.util.Optional.orElseGet(Optional.java:364)
+	at org.springframework.data.redis.connection.lettuce.StandaloneConnectionProvider.getConnection(StandaloneConnectionProvider.java:112)
+	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$ExceptionTranslatingConnectionProvider.getConnection(LettuceConnectionFactory.java:1776)
+	... 16 common frames omitted
+Caused by: io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: getsockopt: /192.168.156.24:6379
+Caused by: java.net.ConnectException: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:973)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:336)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:339)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:994)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+[2m2024-06-26T00:33:22.430+08:00[0;39m [33m WARN[0;39m [35m14924[0;39m [2m---[0;39m [2m[phoenix-scaffold] [  restartedMain][0;39m [2m[0;39m[36mtrationDelegate$BeanPostProcessorChecker[0;39m [2m:[0;39m Bean 'com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration' of type [com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+[2m2024-06-26 00:33:47.901[0;39m [33m WARN[0;39m [35m12188[0;39m [2m--[[34mrequestId: [0;39m]--[[33mclientAddr: [0;39m]--[0;39m [2m[  restartedMain][0;39m [36mtrationDelegate$BeanPostProcessorChecker[0;39m [33mpostProcessAfterInitialization:437[0;39m [2m:[0;39m Bean 'com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration' of type [com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+[2m2024-06-26 00:35:00.281[0;39m [33m WARN[0;39m [35m28688[0;39m [2m--[[34mrequestId: [0;39m]--[[33mclientAddr: [0;39m]--[0;39m [2m[  restartedMain][0;39m [36mtrationDelegate$BeanPostProcessorChecker[0;39m [33mpostProcessAfterInitialization:437[0;39m [2m:[0;39m Bean 'com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration' of type [com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+[2m2024-06-26 00:35:01.917[0;39m [33m WARN[0;39m [35m28688[0;39m [2m--[[34mrequestId: [0;39m]--[[33mclientAddr: [0;39m]--[0;39m [2m[  restartedMain][0;39m [36mc.p.s.s.impl.SysOperationLogServiceImpl [0;39m [33mrun:26[0;39m [2m:[0;39m this warn
+[2m2024-06-26 00:35:01.918[0;39m [31mERROR[0;39m [35m28688[0;39m [2m--[[34mrequestId: [0;39m]--[[31mclientAddr: [0;39m]--[0;39m [2m[  restartedMain][0;39m [36mc.p.s.s.impl.SysOperationLogServiceImpl [0;39m [31mrun:27[0;39m [2m:[0;39m this error
+[2m2024-06-26 00:36:15.619[0;39m [33m WARN[0;39m [35m30536[0;39m [2m--[[34mrequestId: [0;39m]--[[33mclientAddr: [0;39m]--[0;39m [2m[  restartedMain][0;39m [36mtrationDelegate$BeanPostProcessorChecker[0;39m [33mpostProcessAfterInitialization:437[0;39m [2m:[0;39m Bean 'com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration' of type [com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+[2m2024-06-26 00:36:17.282[0;39m [33m WARN[0;39m [35m30536[0;39m [2m--[[34mrequestId: [0;39m]--[[33mclientAddr: [0;39m]--[0;39m [2m[  restartedMain][0;39m [36mc.p.s.s.impl.SysOperationLogServiceImpl [0;39m [33mrun:26[0;39m [2m:[0;39m this warn
+[2m2024-06-26 00:36:17.283[0;39m [31mERROR[0;39m [35m30536[0;39m [2m--[[34mrequestId: [0;39m]--[[31mclientAddr: [0;39m]--[0;39m [2m[  restartedMain][0;39m [36mc.p.s.s.impl.SysOperationLogServiceImpl [0;39m [31mrun:27[0;39m [2m:[0;39m this error
+[2m2024-06-26 00:36:30.998[0;39m [31mERROR[0;39m [35m30536[0;39m [2m--[[34mrequestId: [0;39m]--[[31mclientAddr: [0;39m]--[0;39m [2m[nio-8080-exec-1][0;39m [36mo.a.c.c.C.[.[.[/].[dispatcherServlet]   [0;39m [31mlog:175[0;39m [2m:[0;39m Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [No adapter for handler [com.phoenix.scaffold.controller.HelloController@3e6b7fc8]: The DispatcherServlet configuration needs to include a HandlerAdapter that supports this handler] with root cause
+
+jakarta.servlet.ServletException: No adapter for handler [com.phoenix.scaffold.controller.HelloController@3e6b7fc8]: The DispatcherServlet configuration needs to include a HandlerAdapter that supports this handler
+	at org.springframework.web.servlet.DispatcherServlet.getHandlerAdapter(DispatcherServlet.java:1324)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:107)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+[2m2024-06-26 00:37:16.623[0;39m [31mERROR[0;39m [35m30536[0;39m [2m--[[34mrequestId: [0;39m]--[[31mclientAddr: [0;39m]--[0;39m [2m[nio-8080-exec-3][0;39m [36mo.a.c.c.C.[.[.[/].[dispatcherServlet]   [0;39m [31mlog:175[0;39m [2m:[0;39m Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [No adapter for handler [com.phoenix.scaffold.controller.HelloController@3e6b7fc8]: The DispatcherServlet configuration needs to include a HandlerAdapter that supports this handler] with root cause
+
+jakarta.servlet.ServletException: No adapter for handler [com.phoenix.scaffold.controller.HelloController@3e6b7fc8]: The DispatcherServlet configuration needs to include a HandlerAdapter that supports this handler
+	at org.springframework.web.servlet.DispatcherServlet.getHandlerAdapter(DispatcherServlet.java:1324)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:107)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+[2m2024-06-26 00:38:10.609[0;39m [33m WARN[0;39m [35m4060[0;39m [2m--[[34mrequestId: [0;39m]--[[33mclientAddr: [0;39m]--[0;39m [2m[  restartedMain][0;39m [36mtrationDelegate$BeanPostProcessorChecker[0;39m [33mpostProcessAfterInitialization:437[0;39m [2m:[0;39m Bean 'com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration' of type [com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+[2m2024-06-26 00:38:12.129[0;39m [33m WARN[0;39m [35m4060[0;39m [2m--[[34mrequestId: [0;39m]--[[33mclientAddr: [0;39m]--[0;39m [2m[  restartedMain][0;39m [36mc.p.s.s.impl.SysOperationLogServiceImpl [0;39m [33mrun:26[0;39m [2m:[0;39m this warn
+[2m2024-06-26 00:38:12.130[0;39m [31mERROR[0;39m [35m4060[0;39m [2m--[[34mrequestId: [0;39m]--[[31mclientAddr: [0;39m]--[0;39m [2m[  restartedMain][0;39m [36mc.p.s.s.impl.SysOperationLogServiceImpl [0;39m [31mrun:27[0;39m [2m:[0;39m this error
+[2m2024-06-26 00:38:20.256[0;39m [31mERROR[0;39m [35m4060[0;39m [2m--[[34mrequestId: [0;39m]--[[31mclientAddr: [0;39m]--[0;39m [2m[nio-8080-exec-1][0;39m [36mo.a.c.c.C.[.[.[/].[dispatcherServlet]   [0;39m [31mlog:175[0;39m [2m:[0;39m Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [No adapter for handler [com.phoenix.scaffold.controller.HelloController@4950fe20]: The DispatcherServlet configuration needs to include a HandlerAdapter that supports this handler] with root cause
+
+jakarta.servlet.ServletException: No adapter for handler [com.phoenix.scaffold.controller.HelloController@4950fe20]: The DispatcherServlet configuration needs to include a HandlerAdapter that supports this handler
+	at org.springframework.web.servlet.DispatcherServlet.getHandlerAdapter(DispatcherServlet.java:1324)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:107)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+[2m2024-06-26 00:39:01.594[0;39m [33m WARN[0;39m [35m4060[0;39m [2m--[[34mrequestId: [0;39m]--[[33mclientAddr: [0;39m]--[0;39m [2m[  restartedMain][0;39m [36mtrationDelegate$BeanPostProcessorChecker[0;39m [33mpostProcessAfterInitialization:437[0;39m [2m:[0;39m Bean 'com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration' of type [com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+[2m2024-06-26 00:39:02.236[0;39m [33m WARN[0;39m [35m4060[0;39m [2m--[[34mrequestId: [0;39m]--[[33mclientAddr: [0;39m]--[0;39m [2m[  restartedMain][0;39m [36mc.p.s.s.impl.SysOperationLogServiceImpl [0;39m [33mrun:26[0;39m [2m:[0;39m this warn
+[2m2024-06-26 00:39:02.236[0;39m [31mERROR[0;39m [35m4060[0;39m [2m--[[34mrequestId: [0;39m]--[[31mclientAddr: [0;39m]--[0;39m [2m[  restartedMain][0;39m [36mc.p.s.s.impl.SysOperationLogServiceImpl [0;39m [31mrun:27[0;39m [2m:[0;39m this error
+[2m2024-06-26 00:39:05.231[0;39m [33m WARN[0;39m [35m30356[0;39m [2m--[[34mrequestId: [0;39m]--[[33mclientAddr: [0;39m]--[0;39m [2m[  restartedMain][0;39m [36mtrationDelegate$BeanPostProcessorChecker[0;39m [33mpostProcessAfterInitialization:437[0;39m [2m:[0;39m Bean 'com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration' of type [com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+[2m2024-06-26 00:39:06.798[0;39m [33m WARN[0;39m [35m30356[0;39m [2m--[[34mrequestId: [0;39m]--[[33mclientAddr: [0;39m]--[0;39m [2m[  restartedMain][0;39m [36mc.p.s.s.impl.SysOperationLogServiceImpl [0;39m [33mrun:26[0;39m [2m:[0;39m this warn
+[2m2024-06-26 00:39:06.798[0;39m [31mERROR[0;39m [35m30356[0;39m [2m--[[34mrequestId: [0;39m]--[[31mclientAddr: [0;39m]--[0;39m [2m[  restartedMain][0;39m [36mc.p.s.s.impl.SysOperationLogServiceImpl [0;39m [31mrun:27[0;39m [2m:[0;39m this error
+[2m2024-06-26 00:40:01.287[0;39m [33m WARN[0;39m [35m34912[0;39m [2m--[[34mrequestId: [0;39m]--[[33mclientAddr: [0;39m]--[0;39m [2m[           main][0;39m [36mtrationDelegate$BeanPostProcessorChecker[0;39m [33mpostProcessAfterInitialization:437[0;39m [2m:[0;39m Bean 'com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration' of type [com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+[2m2024-06-26 00:40:03.497[0;39m [33m WARN[0;39m [35m34912[0;39m [2m--[[34mrequestId: [0;39m]--[[33mclientAddr: [0;39m]--[0;39m [2m[           main][0;39m [36mc.p.s.s.impl.SysOperationLogServiceImpl [0;39m [33mrun:26[0;39m [2m:[0;39m this warn
+[2m2024-06-26 00:40:03.497[0;39m [31mERROR[0;39m [35m34912[0;39m [2m--[[34mrequestId: [0;39m]--[[31mclientAddr: [0;39m]--[0;39m [2m[           main][0;39m [36mc.p.s.s.impl.SysOperationLogServiceImpl [0;39m [31mrun:27[0;39m [2m:[0;39m this error
+[2m2024-06-26 00:42:15.681[0;39m [33m WARN[0;39m [35m35860[0;39m [2m--[[34mrequestId: [0;39m]--[[33mclientAddr: [0;39m]--[0;39m [2m[           main][0;39m [36mtrationDelegate$BeanPostProcessorChecker[0;39m [33mpostProcessAfterInitialization:437[0;39m [2m:[0;39m Bean 'com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration' of type [com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+[2m2024-06-26 00:42:17.895[0;39m [33m WARN[0;39m [35m35860[0;39m [2m--[[34mrequestId: [0;39m]--[[33mclientAddr: [0;39m]--[0;39m [2m[           main][0;39m [36mc.p.s.s.impl.SysOperationLogServiceImpl [0;39m [33mrun:26[0;39m [2m:[0;39m this warn
+[2m2024-06-26 00:42:17.896[0;39m [31mERROR[0;39m [35m35860[0;39m [2m--[[34mrequestId: [0;39m]--[[31mclientAddr: [0;39m]--[0;39m [2m[           main][0;39m [36mc.p.s.s.impl.SysOperationLogServiceImpl [0;39m [31mrun:27[0;39m [2m:[0;39m this error
+[2m2024-06-26 00:43:59.040[0;39m [33m WARN[0;39m [35m46328[0;39m [2m--[[34mrequestId: [0;39m]--[[33mclientAddr: [0;39m]--[0;39m [2m[           main][0;39m [36mtrationDelegate$BeanPostProcessorChecker[0;39m [33mpostProcessAfterInitialization:437[0;39m [2m:[0;39m Bean 'com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration' of type [com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+[2m2024-06-26 00:44:01.272[0;39m [33m WARN[0;39m [35m46328[0;39m [2m--[[34mrequestId: [0;39m]--[[33mclientAddr: [0;39m]--[0;39m [2m[           main][0;39m [36mc.p.s.s.impl.SysOperationLogServiceImpl [0;39m [33mrun:26[0;39m [2m:[0;39m this warn
+[2m2024-06-26 00:44:01.272[0;39m [31mERROR[0;39m [35m46328[0;39m [2m--[[34mrequestId: [0;39m]--[[31mclientAddr: [0;39m]--[0;39m [2m[           main][0;39m [36mc.p.s.s.impl.SysOperationLogServiceImpl [0;39m [31mrun:27[0;39m [2m:[0;39m this error
+[2m2024-06-26 00:45:23.892[0;39m [33m WARN[0;39m [35m46428[0;39m [2m--[[34mrequestId: [0;39m]--[[33mclientAddr: [0;39m]--[0;39m [2m[           main][0;39m [36mtrationDelegate$BeanPostProcessorChecker[0;39m [33mpostProcessAfterInitialization:437[0;39m [2m:[0;39m Bean 'com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration' of type [com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+[2m2024-06-26 00:45:26.056[0;39m [33m WARN[0;39m [35m46428[0;39m [2m--[[34mrequestId: [0;39m]--[[33mclientAddr: [0;39m]--[0;39m [2m[           main][0;39m [36mc.p.s.s.impl.SysOperationLogServiceImpl [0;39m [33mrun:26[0;39m [2m:[0;39m this warn
+[2m2024-06-26 00:45:26.056[0;39m [31mERROR[0;39m [35m46428[0;39m [2m--[[34mrequestId: [0;39m]--[[31mclientAddr: [0;39m]--[0;39m [2m[           main][0;39m [36mc.p.s.s.impl.SysOperationLogServiceImpl [0;39m [31mrun:27[0;39m [2m:[0;39m this error
+[2m2024-06-26 00:48:19.947[0;39m [33m WARN[0;39m [35m37628[0;39m [2m--[[34mrequestId: [0;39m]--[[33mclientAddr: [0;39m]--[0;39m [2m[           main][0;39m [36mtrationDelegate$BeanPostProcessorChecker[0;39m [33mpostProcessAfterInitialization:437[0;39m [2m:[0;39m Bean 'com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration' of type [com.mybatisflex.spring.boot.FlexTransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [meterRegistryPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
