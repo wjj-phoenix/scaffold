@@ -1,5 +1,7 @@
 package com.phoenix.scaffold.resp;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.phoenix.scaffold.lang.Result;
 import jakarta.annotation.Nullable;
 import org.springframework.core.MethodParameter;
@@ -21,6 +23,15 @@ public class IResponseBodyAdvice implements ResponseBodyAdvice<Object> {
     public Object beforeBodyWrite(@Nullable Object body, @Nullable MethodParameter parameter, @Nullable MediaType type, @Nullable Class<? extends HttpMessageConverter<?>> converterType, @Nullable ServerHttpRequest request, @Nullable ServerHttpResponse response) {
         if (body instanceof Result) {
             return body;
+        }
+        // 如果返回值是String类型，那就手动把Result对象转换成JSON字符串
+        ObjectMapper objectMapper = new ObjectMapper();
+        if (body instanceof String) {
+            try {
+                return objectMapper.writeValueAsString(Result.success(body));
+            } catch (JsonProcessingException e) {
+                throw new RuntimeException(e);
+            }
         }
         return Result.success(body);
     }

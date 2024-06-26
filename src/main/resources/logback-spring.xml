@@ -14,7 +14,6 @@
     <property name="ERROR_LOG_FILE" value="${LOG_PATH}/error.log"/>
 
     <!-- 自定义控制台打印格式 -->
-    <!-- <property name="FILE_LOG_PATTERN" value="%green(%d{yyyy-MM-dd HH:mm:ss.SSS}) [%blue(requestId: %X{requestId})] [%highlight(%thread)] ${PID:- } %logger{36} %-5level - %msg%n"/> -->
     <!-- 彩色日志依赖的渲染类 -->
     <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />
     <conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter" />
