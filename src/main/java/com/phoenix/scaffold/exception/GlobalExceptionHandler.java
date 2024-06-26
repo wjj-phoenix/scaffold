@@ -24,26 +24,26 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Result<Null> doException(Exception ex) {
-        log.info("服务出现的异常:{}", ex.getMessage());
+        log.error("服务出现的异常:{}", ex.getMessage());
         ex.printStackTrace(System.err);
         return Result.fail(RespStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public Result<Null> doHttpMessageNotReadableException(HttpMessageNotReadableException ex) {
-        log.info("Http 消息不可读异常:{}", ex.getMessage());
+        log.error("Http 消息不可读异常:{}", ex.getMessage());
         return Result.fail("Http 消息不可读异常");
     }
 
     @ExceptionHandler(IllegalStateException.class)
     public Result<Null> doIllegalStateException(IllegalStateException ex) {
-        log.info("运行服务出现的IllegalStateException异常:{}", ex.getMessage());
+        log.error("运行服务出现的IllegalStateException异常:{}", ex.getMessage());
         return Result.fail(ex.getMessage());
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
     public Result<Null> doIllegalArgumentException(IllegalArgumentException ex) {
-        log.info("运行服务出现的IllegalArgumentException异常:{}", ex.getMessage());
+        log.error("运行服务出现的IllegalArgumentException异常:{}", ex.getMessage());
         return Result.fail(ex.getMessage());
     }
 
@@ -51,7 +51,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler({MethodArgumentNotValidException.class})
     public Result<Null> doMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
         BindingResult bindingResult = ex.getBindingResult();
-        StringBuilder sb = new StringBuilder("校验失败:");
+        StringBuilder sb = new StringBuilder("参数校验失败:");
         for (FieldError fieldError : bindingResult.getFieldErrors()) {
             sb.append(fieldError.getField()).append("：").append(fieldError.getDefaultMessage()).append(";");
         }
