@@ -42,7 +42,7 @@ public class RequestCachingFilter extends OncePerRequestFilter {
         try {
             filterChain.doFilter(requestWrapper, response);
         } catch (Exception e) {
-            e.printStackTrace();
+            e.printStackTrace(System.err);
         }
     }
 }

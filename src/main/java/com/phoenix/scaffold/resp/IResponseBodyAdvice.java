@@ -2,6 +2,7 @@ package com.phoenix.scaffold.resp;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.phoenix.scaffold.annotation.NotControllerRespAdvice;
 import com.phoenix.scaffold.lang.Result;
 import jakarta.annotation.Nullable;
 import org.springframework.core.MethodParameter;
@@ -11,6 +12,8 @@ import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
+
+import java.util.Objects;
 
 /**
  * @author wjj-phoenix
@@ -37,7 +40,8 @@ public class IResponseBodyAdvice implements ResponseBodyAdvice<Object> {
     }
 
     @Override
-    public boolean supports(@Nullable MethodParameter returnType, @Nullable Class<? extends HttpMessageConverter<?>> converterType) {
-        return true;
+    public boolean supports(@Nullable MethodParameter param, @Nullable Class<? extends HttpMessageConverter<?>> converterType) {
+        // 若返回类型已包装或不需要包装，则直接返回
+        return !(Objects.requireNonNull(param).getParameterType().isAssignableFrom(Result.class) || param.hasMethodAnnotation(NotControllerRespAdvice.class));
     }
 }
