@@ -1,0 +1,86 @@
+{
+  "serverUrl": "http://127.0.0.1",
+  "pathPrefix": "/api/scaffold",
+  "isStrict": false,
+  "allInOne": true,
+  "outPath": "./scaffold",
+  "coverOld": true,
+  "createDebugPage": true,
+  "packageFilters": "com.phoenix.scaffold.controller.*",
+  "md5EncryptedHtmlName": false,
+  "style": "xt256",
+  "projectName": "sacffold",
+  "skipTransientField": true,
+  "sortByTitle": false,
+  "showAuthor": true,
+  "requestFieldToUnderline": true,
+  "responseFieldToUnderline": true,
+  "inlineEnum": true,
+  "recursionLimit": 7,
+  "allInOneDocFileName": "index.html",
+  "requestExample": "true",
+  "responseExample": "true",
+
+  "ignoreRequestParams": [
+  ],
+  "dataDictionaries": [
+    {
+      "title": "http状态码字典",
+      "enumClassName": "com.phoenix.scaffold.lang.RespStatus",
+      "codeField": "code",
+      "descField": "message"
+    }
+  ],
+  "errorCodeDictionaries": [
+    {
+      "title": "title",
+      "enumClassName": "com.phoenix.scaffold.lang.RespStatus",
+      "codeField": "code",
+      "descField": "message"
+    }
+  ],
+  "revisionLogs": [
+    {
+      "version": "1.1",
+      "revisionTime": "2022-07-01 22:12:01",
+      "status": "update",
+      "author": "pdai",
+      "remarks": "init user api"
+    },
+    {
+      "version": "1.2",
+      "revisionTime": "2022-07-01 22:12:02",
+      "status": "update",
+      "author": "pdai",
+      "remarks": "add address api"
+    }
+  ],
+  "requestHeaders": [
+    {
+      "name": "token",
+      "type": "Authorization",
+      "desc": "desc",
+      "value": "token请求头的值",
+      "required": true,
+      "since": "-",
+      "pathPatterns": "/app/test/**",
+      "excludePathPatterns": "/app/page/**"
+    }
+  ],
+  "requestParams": [
+    {
+      "name": "configPathParam",
+      "type": "string",
+      "desc": "desc",
+      "paramIn": "path",
+      "value": "testPath",
+      "required": false,
+      "since": "2.2.3",
+      "pathPatterns": "/app/test/**",
+      "excludePathPatterns": "/app/page/**"
+    }
+  ],
+  "responseBodyAdvice": {
+    "className": "com.phoenix.scaffold.lang.Result"
+  }
+}
