@@ -26,3 +26,12 @@ spring:
       host: 192.168.156.24
       port: 6379
       password: W&l1203@
+springdoc:
+  api-docs: # 是否开启接口文档
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui: # 持久化认证数据，如果设置为 true，它会保留授权数据并且不会在浏览器关闭/刷新时丢失
+    persistAuthorization: true
+    path: /swagger-ui.html
+    enabled: true
+  packages-to-scan: com.phoenix.scaffold.controller
