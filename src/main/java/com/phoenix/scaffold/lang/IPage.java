@@ -1,5 +1,6 @@
 package com.phoenix.scaffold.lang;
 
+import com.mybatisflex.core.paginate.Page;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -34,12 +35,12 @@ public class IPage<T> implements Serializable {
     /**
      * 当前页,PageNum
      */
-    private int page;
+    private long page;
 
     /**
      * 每页条数,PageSize
      */
-    private int limits;
+    private long limits;
 
     /**
      * 分页结果
@@ -50,6 +51,14 @@ public class IPage<T> implements Serializable {
         IPage<T> result = new IPage<>();
         result.setRows(new ArrayList<>());
         return result;
+    }
+
+    public IPage(Page<T> page) {
+        this.page = page.getPageNumber();
+        this.limits = page.getPageSize();
+        this.pages = page.getTotalPage();
+        this.total = page.getTotalRow();
+        this.rows = page.getRecords();
     }
 
     /**
