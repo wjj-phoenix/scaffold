@@ -5,6 +5,7 @@ import com.mybatisflex.codegen.Generator;
 import com.mybatisflex.codegen.config.GlobalConfig;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 /**
  * @author wjj-phoenix
@@ -14,9 +15,9 @@ public class GenCodeUtil {
     public static void main(String[] args) {
         // 配置数据源
         DruidDataSource dataSource = new DruidDataSource();
-        dataSource.setUrl("jdbc:mysql://192.168.156.24:3306/scaffold?characterEncoding=utf-8");
+        dataSource.setUrl("jdbc:mysql://192.168.73.100:3306/scaffold?characterEncoding=utf-8");
         dataSource.setUsername("root");
-        dataSource.setPassword("W&l1203@");
+        dataSource.setPassword("Tv75aYT8@");
 
         // 创建配置内容，两种风格都可以。
         GlobalConfig globalConfig = createGlobalConfigUseStyle1();
@@ -45,6 +46,7 @@ public class GenCodeUtil {
         // 设置项目的JDK版本，项目的JDK为14及以上时建议设置该项，小于14则可以不设置
         globalConfig.setEntityJdkVersion(21);
         globalConfig.getEntityConfig().setOverwriteEnable(true);
+        globalConfig.getTableDefConfig().setOverwriteEnable(true);
 
         // 设置生成 mapper
         globalConfig.setMapperGenerateEnable(true);
@@ -53,6 +55,7 @@ public class GenCodeUtil {
 
         globalConfig.setServiceGenerateEnable(true);
         globalConfig.setServiceClassPrefix("I");
+        globalConfig.getStrategyConfig().setGenerateTables(Set.of("machine","resource_auth"));
 
         globalConfig.setServiceImplGenerateEnable(true);
 
